@@ -1,0 +1,53 @@
+'use strict';
+
+require('dotenv').config();
+const toBool = require('to-bool');
+
+module.exports = {
+  DEBUG_SQL: toBool(process.env.DEBUG_SQL),
+  DEMO_DOCTOR_ORG_NAME: process.env.DEMO_DOCTOR_ORG_NAME || 'DEMO Medical Test Site',
+  DEMO_ROOT_ORG_NAME: process.env.DEMO_ROOT_ORG_NAME || 'MedCreds.com',
+  DEMO_VERIFIER_ORG_NAME: process.env.DEMO_VERIFIER_ORG_NAME,
+  ENABLE_LOG_ROUTES: toBool(process.env.ENABLE_LOG_ROUTES),
+  DEMO_MEDICAL_SITE_STREETCRED_TENANT_ID: process.env.DEMO_MEDICAL_SITE_STREETCRED_TENANT_ID || 'TENANT:doctor',
+  DEMO_MEDICAL_SITE_STREETCRED_SUBSCRIPTION_ID: process.env.DEMO_MEDICAL_SITE_STREETCRED_SUBSCRIPTION_ID,
+  DEMO_MEDICAL_SITE_STREETCRED_API_KEY: process.env.DEMO_MEDICAL_SITE_STREETCRED_API_KEY,
+  DEMO_VERIFIER_STREETCRED_TENANT_ID: process.env.DEMO_VERIFIER_STREETCRED_TENANT_ID || 'TENANT:verifier',
+  DEMO_VERIFIER_STREETCRED_SUBSCRIPTION_ID: process.env.DEMO_VERIFIER_STREETCRED_SUBSCRIPTION_ID,
+  DEMO_VERIFIER_STREETCRED_API_KEY: process.env.DEMO_VERIFIER_STREETCREDs_API_KEY,
+  MOBILE_APP_INSTALLATION_LINK: process.env.MOBILE_APP_INSTALLATION_LINK || 'https://bit.ly/gocreds',
+  OTHER_DEMO_DOCTOR_ORG_NAME: process.env.OTHER_DEMO_DOCTOR_ORG_NAME || 'Another DEMO Medical Test Site',
+  PORT: process.env.PORT || 5000,
+  PG_READ_URL: process.env.PG_READ_URL,
+  PG_OPTIONS: process.env.PG_OPTIONS || '?timezone=UTC',
+  PG_WRITE_URL: process.env.PG_WRITE_URL || 'pg-sqlproxy-gcloud-sqlproxy.sqlproxy', // k8s
+  PG_LOCALHOST: process.env.PG_LOCALHOST,
+  DATABASE_URL: process.env.DATABASE_URL || `postgres://${process.env.PG_USER}:${process.env.PG_PASS}@${process.env.PG_WRITE_URL}:${process.env.PG_PORT}/${process.env.PG_NAME}`,
+  SCHEMA_TAG: process.env.SCHEMA_TAG || 'mc',
+  TWILIO_SID: process.env.TWILIO_SID,
+  TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
+  TWILIO_FROM: process.env.TWILIO_FROM,
+  TWO_FACTOR_CODE_TTL: process.env.TWO_FACTOR_CODE_TTL || 6000,
+  REDIS_HOST: process.env.REDIS_HOST || '10.0.9.121',
+  REDIS_LOGGING_ENABLED: toBool(process.env.REDIS_LOGGING_ENABLED),
+  MAILGUN_API_KEY: process.env.MAILGUN_API_KEY,
+  HUBSPOT_KEY: process.env.HUBSPOT_KEY,
+  GSUITE_KEY: process.env.GSUITE_KEY,
+  PORTAL_ORIGIN: process.env.PORTAL_ORIGIN || 'https://app.medcreds.com',
+  SESSION_LOGGING_ENABLED: toBool(process.env.SESSION_LOGGING_ENABLED),
+  STREETCRED_TENANT_ID: process.env.STREETCRED_TENANT_ID || `TENANT:root`,
+  STREETCRED_SUBSCRIPTION_ID: process.env.STREETCRED_SUBSCRIPTION_ID,
+  STREETCRED_API_KEY: process.env.STREETCRED_API_KEY,
+  STREETCRED_PROVIDER_KEY: process.env.STREETCRED_PROVIDER_KEY,
+  STREETCRED_AGENT_API_BASE: process.env.STREETCRED_AGENT_API_BASE || 'https://api.trinsic.id/v1/credentials',
+  ZOOM_JWT: process.env.ZOOM_JWT,
+  CORE_SECRET_SALT: process.env.CORE_SECRET_SALT,
+  WEBHOOK_BASE: process.env.WEBHOOK_BASE,
+  DISABLE_REQUEST_LOGGING: toBool(process.env.DISABLE_REQUEST_LOGGING),
+  MCN_API_KEY: process.env.MCN_API_KEY,
+  MCN_SUB_KEY: process.env.MCN_SUB_KEY,
+  MCN_TENANT_ID: process.env.MCN_TENANT_ID,
+  GAGD_API_KEY: process.env.GAGD_API_KEY,
+  GAGD_SUB_KEY: process.env.GAGD_SUB_KEY,
+  GAGD_TENANT_ID: process.env.GAGD_TENANT_ID
+};

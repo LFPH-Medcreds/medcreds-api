@@ -1,0 +1,24 @@
+"id","name","email","logo","city","state","country","updated_at","created_at","config","network_name","parent_org_id"
+6,"MedCreds.com",NULL,"https://streetcredproduction.blob.core.windows.net/tenantfiles/db5d1ea5-ba1f-49d5-9a07-9502c1b7068b_logo_square.png",NULL,NULL,NULL,NULL,"2020-05-14 01:41:42.205225","{""streetcred"":{""tenantId"":""kcQzG4deDMjPZAfDXC6Ld5rwziCxY4Pc"",""apiKey"":""bPDEZeBgRyL97WkfAcGtgZ1EoZtBbZ41pyv4XZWsItc"",""subscriptionId"":""2b94ef3fae2340af92d7cc03b65513fe"",""policyId"":""f4ce8ffc-cf69-46dc-8012-08d7fc0f2b49"",""definitionId"":""GgNB9zxY2MbsKmx6b52GHA:3:CL:99916:mc""}}",NULL,NULL
+7,"Doctor Demor",NULL,"https://streetcredproduction.blob.core.windows.net/tenantfiles/cc22a644-42bd-4b46-b8c7-ab868d409a2a_doctorblue.png",NULL,NULL,NULL,NULL,"2020-05-14 01:41:42.238149","{""streetcred"":{""tenantId"":""F6Qmc1BeZRtvMiX4LJRYsE8l7ogmX9Mt"",""subscriptionId"":""2b94ef3fae2340af92d7cc03b65513fe"",""apiKey"":""q-3d__kgxpxuBgXHxgR1XWQXgaZGTmmPkf-dpivWKF8"",""policyId"":""25f06515-45ef-45cf-aec9-08d803047ee2"",""definitionId"":""8JgDbf6c4CvTvqrDpjYKHR:3:CL:99916:manual1""}}",NULL,NULL
+8,"Another DEMO Medical Test Site",NULL,NULL,NULL,NULL,NULL,NULL,"2020-05-14 01:41:42.254561","{}",NULL,NULL
+9,"Gary's Discount Wallpaper",NULL,"https://streetcredproduction.blob.core.windows.net/tenantfiles/83a9c8ad-26e7-4257-b427-804b2e2d1dc0_cd928346-d288-474e-b633-3410576a232f",NULL,NULL,NULL,NULL,"2020-05-14 01:41:42.271987","{""streetcred"":{""tenantId"":""JYphkVzOmFFUmnLC6lxcGqClP36CfCxO"",""subscriptionId"":""2b94ef3fae2340af92d7cc03b65513fe"",""apiKey"":""4Woag5sqlI_0TJxVjU1T6zw50c0K4daQkdBPwJUrjvE"",""definitionId"":""HyY1Gqy8AAdqZueUQs6vUD:3:CL:99916:mc"",""policyId"":""a1601e66-c494-4a2a-aec8-08d803047ee2""}}",NULL,NULL
+10,"MikeyCo",NULL,NULL,NULL,NULL,NULL,NULL,"2020-05-14 01:41:42.288134","{""streetcred"":{""apiKey"":""eRMZ91bnXPO9Q5anZ9WUA0eu1wB8NgpIcYj0fcabtX4"",""subscriptionId"":""2b94ef3fae2340af92d7cc03b65513fe"",""tenantId"":""gWOQBjaICb8sgYFdyybWitYBuPZhR3lX"",""policyId"":""b47886c4-0a69-4350-a27d-08d807eddf00"",""definitionId"":""8C2Cpgx2daR6C2RhNhpzX:3:CL:99916:mc""}}",NULL,NULL
+66,"MedCreds Network",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-25 04:41:33.176461","{""streetcred"":{""apiKey"":""BdH1kjpuVjHmPMsXV1DL7GfIljnjNTlYo1vS4MgM1T4"",""subscriptionId"":""2b94ef3fae2340af92d7cc03b65513fe"",""tenantId"":""SRjWcrLBPcwl1Gl8hdcrbrgekjQOxvoX"",""policyId"":""7b4dd15d-7cc7-4f2b-3431-08d812bcdbdc"",""definitionId"":""AZ3Ud6NrmA3F2G1JM5iybc:3:CL:99916:mc""}}",NULL,NULL
+68,"role",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-25 06:39:35.910554","{}",NULL,NULL
+69,"doctor",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-25 06:53:01.910793","{}",NULL,7
+70,"doctor",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-25 06:54:23.819887","{}",NULL,66
+71,"doctor",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-25 07:28:49.254892","{}",NULL,NULL
+72,"Doctor Tony",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-25 07:40:34.250056","{}",NULL,66
+73,"Shoe Bang",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-26 03:21:34.011621","{}",NULL,66
+74,"Jim Tom Dong Tooth Polishing",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-26 05:36:00.380092","{}",NULL,66
+75,"DEMO Tony Dental Clinic",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-26 05:36:46.391635","{}",NULL,66
+76,"Phillip Dentistry Practice",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-26 17:34:03.273633","{}",NULL,66
+77,"DEMO Max Dental Clinic","chris@proofmarket.io",NULL,NULL,NULL,NULL,NULL,"2020-06-29 19:36:20.360631","{}",NULL,66
+78,"DEMO Chris Dental Clinic",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-29 19:39:13.233275","{}",NULL,66
+79,"DEMO Brian Dental Clinic",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-29 19:43:00.341238","{}",NULL,66
+80,"DEMO Tony Dental Clinic 2",NULL,NULL,NULL,NULL,NULL,NULL,"2020-06-29 19:51:36.529657","{}",NULL,66
+81,"Stage Office1",NULL,NULL,NULL,NULL,NULL,NULL,"2020-07-02 20:17:52.779864","{}",NULL,66
+82,"Stage Office2",NULL,NULL,NULL,NULL,NULL,NULL,"2020-07-02 21:49:11.088601","{}",NULL,66
+83,"Stageqa o4",NULL,NULL,NULL,NULL,NULL,NULL,"2020-07-28 23:21:07.931027","{}",NULL,66
+84,"Phillip Verifier",NULL,NULL,NULL,NULL,NULL,NULL,"2020-08-10 06:52:34.011439","{""streetcred"":{""policyId"":""0948e2cb-84ae-495c-71a2-08d82b83a3e8"",""definitionId"":""GgNB9zxY2MbsKmx6b52GHA:3:CL:123515:mc""}}",NULL,66

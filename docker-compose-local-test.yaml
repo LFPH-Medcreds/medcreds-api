@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+    postgres:
+        image: postgres:11
+        environment:
+            - POSTGRES_DB=${PG_NAME}
+            - POSTGRES_USER=${PG_USER}
+            - POSTGRES_PASSWORD=${PG_PASS}
+
+    redis:
+        image: redis:5.0.9
+
+    medcreds-api:
+        build: .
+        depends_on:
+            - redis
+            - postgres
+        entrypoint: dockerize -wait tcp://postgres:5432 -wait tcp://redis:6379
+        command: npm run db-init && npm run test
+        environment:
+            - PG_WRITE_URL=${PG_WRITE_URL}
+            - PG_PASS=${PG_PASS}
+            - PG_NAME=${PG_NAME}
+            - PG_USER=${PG_USER}
+            - PG_PORT=${PG_PORT}
+            - REDIS_HOST=${REDIS_HOST}
+            - REDIS_PORT=${REDIS_PORT}
+            - API_PORT=${API_PORT}
+            - FAKE_2FA_SEED=${FAKE_2FA_SEED}
+            - REDIS_LOGGING_ENABLED=${REDIS_LOGGING_ENABLED}
+            - SESSION_LOGGING_ENABLED=${SESSION_LOGGING_ENABLED}
+            - DISABLE_REQUEST_LOGGING=${DISABLE_REQUEST_LOGGING}

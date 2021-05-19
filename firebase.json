@@ -1,0 +1,8 @@
+{
+    "source": "/**",
+    "dynamicLinks": true,
+    "hosting": {
+        "public": "static",
+        "ignore": [ "firebase.json", "**/.*", "**/node_modules/**" ]
+    }
+}
