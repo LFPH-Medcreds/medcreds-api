@@ -70,13 +70,15 @@ module.exports = ({ psql, knex }) => {
           if (data && data.WalletId && correlation) {
             const walletId = data.WalletId;
             await withWalletId(walletId, async (wallet) => {
-              await ctx.streetcred.withOrg(org.id, ({ custodian, custody }) =>
-                custody.acceptCredentialOffer(walletId, correlation)
+              await ctx.streetcred.withOrg(
+                org.id,
+                ({ custodian, custody }) => custody.acceptCredentialOffer(walletId, correlation)
                 // custodian.post(`/api/${walletId}/credentials/${correlation}`)
               );
 
-              let cred = await ctx.streetcred.withOrg(org.id, ({ custodian, custody }) =>
-                custody.getCredential(walletId, correlation)
+              let cred = await ctx.streetcred.withOrg(
+                org.id,
+                ({ custodian, custody }) => custody.getCredential(walletId, correlation)
                 // custodian.get(`/api/${walletId}/credentials/${correlation}`)
               );
 
@@ -93,24 +95,19 @@ module.exports = ({ psql, knex }) => {
             });
           }
         } catch (e) {
-          ctx.error(
-            `Failed to accept credential offer ${correlation} walletId ${data.WalletId}.`,
-            e
-          );
+          ctx.error(`Failed to accept credential offer ${correlation} walletId ${data.WalletId}.`, e);
         }
         break;
       }
       case 'credential_offer': {
         const { ConnectionId: connectionId } = data;
-        ctx.log(`Tenant ${ tenantId } has received a credential_request from: ${ connectionId }`);
+        ctx.log(`Tenant ${tenantId} has received a credential_request from: ${connectionId}`);
         break;
-        }
+      }
       case 'new_connection': {
         try {
           const connectionId = correlation;
           if (!connectionId) return;
-
-
         } catch (e) {
           ctx.error('Failed to create connection.', e);
         }
@@ -143,9 +140,8 @@ module.exports = ({ psql, knex }) => {
                 verification_id: verificationId,
                 config: data,
                 // state: ver.state
-                state: "Proposed"
+                state: 'Proposed'
               });
-
             }
           });
         } catch (e) {
@@ -158,7 +154,6 @@ module.exports = ({ psql, knex }) => {
         break;
       }
       case 'verification': {
-
         const verificationId = correlation;
         const { ConnectionId: connectionId } = data;
 
@@ -166,8 +161,7 @@ module.exports = ({ psql, knex }) => {
           ctx.log('callback - verification: ', ctx.request.body);
           await withTenantId(tenantId, async (orgId) => {
             if (orgId) {
-              ctx.log(`Verification (${ verificationId } completed for org (${ orgId })`);
-
+              ctx.log(`Verification (${verificationId} completed for org (${orgId})`);
 
               // TODO: use this to get the full details of the verification request
               // this is probably unnecessary overhead here as we are not processing the response just yet?
@@ -179,18 +173,15 @@ module.exports = ({ psql, knex }) => {
               record = await AgencyVerification.query().where({ verification_id: verificationId }).first();
               if (record) {
                 // TODO: Update the state of the existing record
-
               } else {
-                ctx.error(`Could not find an existing verification record: ${ verificationId }`);
+                ctx.error(`Could not find an existing verification record: ${verificationId}`);
                 return;
               }
-
             } else {
               ctx.error('OrgID not found????');
               return;
             }
-
-          })
+          });
         } catch (e) {
           ctx.error(
             `Failure to process the verification request notification. | verificationId ${verificationId} | tenantId ${tenantId}.`,
@@ -202,7 +193,7 @@ module.exports = ({ psql, knex }) => {
       }
       case 'new_inbox_message': {
         const { ConnectionId: connectionId } = data;
-        ctx.log(`Tenant ${ tenantId } has received a new message from ${ connectionId }`);
+        ctx.log(`Tenant ${tenantId} has received a new message from ${connectionId}`);
         break;
       }
     }
@@ -231,9 +222,7 @@ module.exports = ({ psql, knex }) => {
 
     const org = await withTenantId(tenantId);
 
-    await ctx.streetcred.withOrg(org.id, ({ agency }) =>
-      ctx.body = agency.listWebhooks()
-    );
+    await ctx.streetcred.withOrg(org.id, ({ agency }) => (ctx.body = agency.listWebhooks()));
   }
 
   /// NOTES: Don't create more that one webhook unless you want different systems to get notification.
@@ -250,30 +239,30 @@ module.exports = ({ psql, knex }) => {
     const org = await withTenantId(tenantId);
 
     await ctx.streetcred.withOrg(org.id, ({ agency }) =>
-    agency
-      .createWebhook({
-        webhookParameters: {
-          url,
-          type: 'Notification'
-        }
-      })
-      .then(async (r) => {
-        let callback = {
-          correlation: '',
-          type: 'new webhook',
-          data_object: r
-        };
-        const result = await Callback.query().insert(callback);
+      agency
+        .createWebhook({
+          webhookParameters: {
+            url,
+            type: 'Notification'
+          }
+        })
+        .then(async (r) => {
+          let callback = {
+            correlation: '',
+            type: 'new webhook',
+            data_object: r
+          };
+          const result = await Callback.query().insert(callback);
 
-        ctx.body = {
-          r,
-          ...result
-        };
-      })
-      .catch((e) => {
-        ctx.error(e);
-        ctx.throw(e);
-      })
+          ctx.body = {
+            r,
+            ...result
+          };
+        })
+        .catch((e) => {
+          ctx.error(e);
+          ctx.throw(e);
+        })
     );
   }
 
@@ -330,13 +319,9 @@ module.exports = ({ psql, knex }) => {
     const org = await withTenantId(tenantId);
 
     if (ctx.request.params.state == 1) {
-      await ctx.streetcred.withOrg(org.id, ({ agency }) =>
-        ctx.body = agency.enableWebhook(id)
-      );
+      await ctx.streetcred.withOrg(org.id, ({ agency }) => (ctx.body = agency.enableWebhook(id)));
     } else if (ctx.request.params.state == 0) {
-      await ctx.streetcred.withOrg(org.id, ({ agency }) =>
-        ctx.body = agency.disableWebhook(id)
-      );
+      await ctx.streetcred.withOrg(org.id, ({ agency }) => (ctx.body = agency.disableWebhook(id)));
     }
   }
 

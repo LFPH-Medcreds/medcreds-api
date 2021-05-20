@@ -25,8 +25,6 @@ module.exports = ({ psql }) => {
   // LOGOUT
   async function logout(ctx) {
     ctx.session = null;
-    // ctx.cookies.set('koa.sid')
-    // ctx.cookies.set('koa.sid.sig')
     ctx.status = 200;
   }
 
@@ -259,13 +257,13 @@ module.exports = ({ psql }) => {
     } else {
       // If the user doesn't have a phone, they will be logged-in without a need for 2fa
       const fullUser = await getUserWithDetails(user.id);
-      
+
       ctx.session.user = {
         id: fullUser.id,
         roles: fullUser.roles,
         orgRoles: fullUser.orgRoles
       };
-  
+
       ctx.body = user;
 
       ctx.body = {

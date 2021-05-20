@@ -198,7 +198,7 @@ const sessConfig = {
     // TODO: remove when no-domain is confirmed to solve out cookie issues
     // domain: process.env.SERVICE_DOMAIN ? process.env.SERVICE_DOMAIN : "localhost",
     secure: !!process.env.SERVICE_DOMAIN,
-    signed: !!process.env.SERVICE_DOMAIN,
+    signed: !!process.env.SERVICE_DOMAIN
   }
 };
 
@@ -206,15 +206,6 @@ app.use(session(sessConfig));
 
 // API CONNECTIONS
 //
-const $zoom = axios.create({
-  baseURL: 'https://api.zoom.us/v2',
-  headers: {
-    Authorization: ZOOM_JWT,
-    'Content-Type': 'application/json'
-  }
-});
-app.context.$zoom = $zoom;
-
 app.context.$sender = require('./services/sender');
 // deprecated
 app.context.sender = app.context.$sender;
@@ -258,19 +249,11 @@ app.context.isAuthorized = isAuthorized;
 //
 app.use(require('./routes/health')({ psql }).routes());
 app.use(require('./routes/tests')({ psql, knex }).routes());
-app.use(require('./routes/db')({ psql }).routes());
 app.use(require('./routes/auth')({ psql }).routes());
 app.use(require('./routes/webhooks')({ psql, knex }).routes());
 
-// app.use(sse({
-//   maxClients: 5000,
-//   pingInterval: 30000
-// }))
 
-// anything above this will won't require a valid JWT to access
-//
-// app.use(jwt({ secret: fs.readFileSync('./jwt/server.cert') }))
-//
+// anything above this will won't require a valid session
 app.use(async (ctx, next) => {
   const { user } = ctx.session;
   if (SESSION_LOGGING_ENABLED) {
@@ -290,16 +273,11 @@ app.use(async (ctx, next) => {
 // anything below this will require a valid JWT to access
 app.use(require('./routes/metrics')({ psql }).routes());
 app.use(require('./routes/user')({ psql, knex, redis }).routes());
-app.use(require('./routes/sse')({ psql, knex, redis }).routes());
 app.use(require('./routes/ssi')().routes());
-app.use(require('./routes/ssi-custodian')().routes());
 app.use(require('./routes/organization')({ psql, knex }).routes());
-app.use(require('./routes/zoom')({ psql }).routes());
 app.use(require('./routes/verification')({ psql, redis }).routes());
-app.use(require('./routes/custodian')({ psql }).routes());
+
 app.use(router.routes());
 app.use(router.allowedMethods());
-
-// app.use(errorCatcher)
 
 module.exports = app;
