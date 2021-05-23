@@ -1,6 +1,6 @@
 const router = require('koa-router')();
 const { getHealth } = require('./ssi/sc-admin');
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = ({ psql }) => {
   router.get('/health/streetcred', getHealth);

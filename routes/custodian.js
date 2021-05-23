@@ -2,7 +2,7 @@
 // https://app.swaggerhub.com/apis-docs/Streetcred/custodian/v1#/
 
 const router = require('koa-router')();
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = ({ psql }) => {
   // WALLET CREATION AND FETCHING ACTIONS -> https://app.swaggerhub.com/apis-docs/Streetcred/custodian/v1#/Wallet

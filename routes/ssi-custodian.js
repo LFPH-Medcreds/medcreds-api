@@ -25,7 +25,7 @@ const {
 } = require('./custodian/custodian-verifications');
 
 const router = require('koa-router')();
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = () => {
   //router.get('/custodian/:hostOrgId/wallets', listWallets);

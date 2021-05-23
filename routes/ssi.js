@@ -35,7 +35,7 @@ const {
 } = require('./ssi/agency-verifications');
 
 const router = require('koa-router')();
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = () => {
   // TODO: Do we start combining some of the DB code into these endpoints too

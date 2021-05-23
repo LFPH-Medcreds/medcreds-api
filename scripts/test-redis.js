@@ -1,7 +1,7 @@
 const { REDIS_HOST } = require('../config');
 const Redis = require('ioredis');
 const redis = new Redis({ host: REDIS_HOST });
-const { randtoken } = require('../util');
+const { randtoken } = require('../src/util');
 //
 (async () => {
   const token = randtoken(10);

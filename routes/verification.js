@@ -1,5 +1,5 @@
 const router = require('koa-router')();
-const { logRoutes, toInt } = require('../util');
+const { logRoutes, toInt } = require('../src/util');
 const { Verification, Organization, User, WalletCredential, Callback } = require('../models');
 const withers = require('../services/withers');
 const { mapVerificationDto, mapUserDto, mapOrganizationDto } = require('../services/mappers.js');

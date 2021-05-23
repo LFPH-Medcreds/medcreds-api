@@ -12,7 +12,7 @@ const {
   // Netki
 } = require('../models');
 
-const { logRoutes, sleep } = require('../util');
+const { logRoutes, sleep } = require('../src/util');
 const { withWalletId, withTenantId } = require('../services/withers');
 
 module.exports = ({ psql, knex }) => {
