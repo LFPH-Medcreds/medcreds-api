@@ -1,9 +1,9 @@
 const router = require('koa-router')();
 const bcrypt = require('bcrypt');
 const PhoneNumber = require('awesome-phonenumber');
-const { atob, btoa, webSafe64, normal64 } = require('../util');
+const { atob, btoa, webSafe64, normal64 } = require('../src/util');
 const { Organization, User, Role, Wallet, Verification } = require('../models');
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 const { TWO_FACTOR_CODE_TTL } = require('../config');
 
 module.exports = ({ psql }) => {

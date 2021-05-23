@@ -1,7 +1,7 @@
 const router = require('koa-router')();
 
 const { User, Meeting, Event } = require('../models');
-const { logRoutes, rbac } = require('../util');
+const { logRoutes, rbac } = require('../src/util');
 
 module.exports = ({ psql }) => {
   User.knex(psql);

@@ -1,4 +1,4 @@
-const { hasRole } = require('../util');
+const { hasRole } = require('../src/util');
 const router = require('koa-router')();
 
 module.exports = ({ psql }) => {

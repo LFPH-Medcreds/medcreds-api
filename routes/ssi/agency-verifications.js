@@ -2,7 +2,7 @@ const { Credentials, CredentialsServiceClient } = require('@trinsic/service-clie
 
 const { Organization } = require('../../models');
 
-const { hasRole } = require('../../util');
+const { hasRole } = require('../../src/util');
 const withers = require('../../services/withers');
 
 /**

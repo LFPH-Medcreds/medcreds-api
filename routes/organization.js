@@ -14,7 +14,7 @@ const {
 const moment = require('moment');
 const { DateTime } = require('luxon');
 
-const { logRoutes, rbac } = require('../util');
+const { logRoutes, rbac } = require('../src/util');
 const {
   mapVerificationDto,
   mapOrganizationConnectionDto,

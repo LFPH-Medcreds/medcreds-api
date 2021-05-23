@@ -12,7 +12,7 @@ const knex = require('knex')({
   client: 'pg',
   connection: DATABASE_URL
 });
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = () => {
   User.knex(knex);

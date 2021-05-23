@@ -1,6 +1,6 @@
 import koaRouter = require('koa-router');
 const router = new koaRouter();
-import { ResponseBody } from '../utilities/response';
+import { ResponseBody } from '../src/utilities/response';
 // import jwt from 'koa-jwt2';
 
 /**

@@ -4,7 +4,7 @@ const { mapTestDto } = require('../services/mappers.js');
 
 const { Test, Organization, TestState, User } = require('../models');
 
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = ({ psql }) => {
   Test.knex(psql);

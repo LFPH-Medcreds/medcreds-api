@@ -21,7 +21,7 @@ const {
   WalletConnection,
   WalletCredential
 } = require('../models');
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = ({ psql, knex }) => {
   User.knex(psql);

@@ -8,7 +8,7 @@ const PassThrough = require('stream').PassThrough;
 const { DATABASE_URL } = require('../config');
 
 const { User, Role, Event } = require('../models');
-const { logRoutes } = require('../util');
+const { logRoutes } = require('../src/util');
 
 module.exports = ({ psql }) => {
   User.knex(psql);

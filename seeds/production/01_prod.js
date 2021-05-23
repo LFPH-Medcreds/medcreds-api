@@ -1,6 +1,6 @@
 const { User, Organization, Role, Event, Test, TestState, Meeting } = require('../../models');
 const bcrypt = require('bcrypt');
-const { randtoken } = require('../../util');
+const { randtoken } = require('../../src/util');
 
 const {
   MCN_API_KEY,

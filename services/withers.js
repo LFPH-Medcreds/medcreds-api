@@ -1,6 +1,6 @@
 const { Organization, User, Wallet } = require('../models');
 
-const { returnIt } = require('../util');
+const { returnIt } = require('../src/util');
 
 async function withOrg(id, doIt) {
   const org = await Organization.query().withGraphFetched('[roles, parent]').findById(id);
