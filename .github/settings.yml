@@ -1,0 +1,23 @@
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+repository:
+  name: medcreds-api
+  description: The MedCreds mission is to unlock healthcare data
+               providing patients with mobility, access, and choice,
+               as well as to accelerate global recovery from the
+               COVID-19 pandemic by implementing the Good Health
+               Pass Interoperable framework for issuers,
+               holders, and verifiers.
+  homepage: https://www.lfph.io
+  default_branch: main
+  has_downloads: true
+  has_issues: false
+  has_projects: false
+  has_wiki: false
+  archived: false
+  private: false
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: true
