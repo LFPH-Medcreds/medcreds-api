@@ -23,7 +23,7 @@ If you haven’t been involved in an open source project before, it can be intim
 
 *No stupid questions*
 
-• Not sure what someone meant? Need help learning to use a tool? Ask lots of questions and let the community support you.
+• Not sure what someone meant? Need help learning to use a tool? Ask lots of questions and let the community support you
 
 *Don’t wait for an invitation*
 
