@@ -30,17 +30,20 @@ module.exports = ({ psql, knex }) => {
   Verification.knex(psql);
   OrgConnections.knex(psql);
 
-  router.get('/organizations/patients', getPatients);
-  router.get('/organizations/verified', getVerifiedUsers);
-  router.patch('/organizations/:hostOrgId/users/:email', patchOrgUser);
-  router.delete('/organizations/:hostOrgId/users/:email', deleteOrgUser);
   router.get('/organizations', getOrgs);
-  router.get('/organizations/:id', getOrg);
   router.post('/organizations', rbac('root'), postOrg);
-  router.post('/organizations/:id/provision', rbac('root'), provisionOrg);
+  router.get('/organizations/:id', getOrg);
   router.put('/organizations/:id', rbac('root'), putOrg);
   router.delete('/organizations/:id', rbac('root'), deleteOrg);
+
+  router.get('/organizations/patients', getPatients);
+  router.get('/organizations/verified', getVerifiedUsers);
+
+  router.patch('/organizations/:hostOrgId/users/:email', patchOrgUser);
+  router.delete('/organizations/:hostOrgId/users/:email', deleteOrgUser);
+
   router.get('/organizations/wallet/:hostOrgId', getOrgWallet);
+  router.post('/organizations/:id/provision', rbac('root'), provisionOrg);
 
   async function deleteOrgUser(ctx, next) {
     const { hostOrgId, email } = ctx.params;
@@ -239,7 +242,7 @@ module.exports = ({ psql, knex }) => {
 
             verifications = verifications.filter(({ updatedAt }) => {
               const verified = DateTime.fromMillis(Date.parse(updatedAt));
-             
+
               if (
                 verified.day === utcStart.day &&
                 verified.month === utcStart.month &&
@@ -259,7 +262,7 @@ module.exports = ({ psql, knex }) => {
               return verified >= utcStart && verified <= utcEnd;
             });
           }
-          
+
           patient.verifications = verifications.map(mapVerificationDto);
           patient.totalVerifications = verifications && verifications.length;
 
@@ -308,7 +311,7 @@ module.exports = ({ psql, knex }) => {
     if (!isRoot) {
       ctx.throw(403);
     }
-    
+
     const org = await Organization.query()
       .where({
         id: ctx.params.id
@@ -394,12 +397,12 @@ module.exports = ({ psql, knex }) => {
             )
           );
         }
-        
+
         org = await Organization.query(trx).upsertGraphAndFetch(org, {
           relate: true,
           unrelate: true
         });
-        
+
         if (org.roles) {
           org.roles = org.roles.map((r) => r.name);
         }
@@ -420,7 +423,7 @@ module.exports = ({ psql, knex }) => {
     if (!isRoot) {
       ctx.throw(403);
     }
-    
+
     await Organization.relatedQuery('roles').for(id).unrelate();
     await Organization.query().deleteById(id);
     ctx.status = 204;
@@ -470,8 +473,7 @@ module.exports = ({ psql, knex }) => {
 
     const [organization, connections, verificationRequests] = await Promise.all([
       await Organization.query().findById(hostOrgId),
-      await OrgConnections.query()
-        .where({ org_id: hostOrgId }),
+      await OrgConnections.query().where({ org_id: hostOrgId }),
       await Verification.query()
         .where({ org_id: hostOrgId })
         .whereNot({ holder_id: null })
